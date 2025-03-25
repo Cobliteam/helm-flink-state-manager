@@ -40,4 +40,4 @@ alex-job-chart:
 " > "$TMP_VALUES"
 
 # Add your values file to the command
-helm upgrade --install ${original_args[@]} --values $TMP_VALUES > aaa.yaml
+helm upgrade --install ${original_args[@]} --values $TMP_VALUES
