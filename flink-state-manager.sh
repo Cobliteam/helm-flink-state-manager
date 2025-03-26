@@ -15,7 +15,7 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     --kube-context)
-      CONTEXT+=("$2")
+      CONTEXT=("$2")
       shift 2
       ;;
     *)
