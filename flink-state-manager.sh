@@ -15,7 +15,7 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     --kube-context)
-      CONTEXT=("$2")
+      CONTEXT="$2"
       shift 2
       ;;
     *)
@@ -25,9 +25,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 OUTPUT=$(mktemp)
-npx @cobliteam/flink-state-manager@1.1.1 --values-path $CHART_PATH/values.yaml --prod-values-path ${VALUES_FILES[0]} --context $CONTEXT --menu | tee $OUTPUT
+npx @cobliteam/flink-state-manager@1.1.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$CONTEXT" --menu | tee "$OUTPUT"
 
-cat $OUTPUT
+cat "$OUTPUT"
 
 # Create a temporary values file
 TMP_VALUES=$(mktemp)
@@ -36,8 +36,8 @@ alex-job-chart:
   jobUpgradeMode: savepoint
   jobRestoreFromSavepoint:
     enabled: true
-    savepointPath: $(tail -n 1 $OUTPUT| cut -d ':' -f 2)
+    savepointPath: $(tail -n 1 "$OUTPUT"| cut -d ':' -f 2)
 " > "$TMP_VALUES"
 
 # Add your values file to the command
-helm upgrade --install ${original_args[@]} --values $TMP_VALUES
+helm upgrade --install "${original_args[@]}" --values "$TMP_VALUES"
