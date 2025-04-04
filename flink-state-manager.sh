@@ -22,8 +22,6 @@ done
 OUTPUT=$(mktemp)
 npx @cobliteam/flink-state-manager@1.1.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu | tee "$OUTPUT"
 
-cat "$OUTPUT"
-
 # Create a temporary values file
 TMP_VALUES=$(mktemp)
 echo "
