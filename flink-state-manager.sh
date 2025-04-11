@@ -33,5 +33,6 @@ alex-job-chart:
 " > "$TMP_VALUES"
 
 # Add your values file to the command
+echo
 echo "helm upgrade --install "${original_args[@]}" --namespace $HELM_NAMESPACE --kube-context $HELM_KUBECONTEXT --values "$TMP_VALUES""
 helm upgrade --install "${original_args[@]}" --namespace $HELM_NAMESPACE --kube-context $HELM_KUBECONTEXT --values "$TMP_VALUES"
