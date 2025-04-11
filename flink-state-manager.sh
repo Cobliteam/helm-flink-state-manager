@@ -20,7 +20,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 OUTPUT=$(mktemp)
-npx @cobliteam/flink-state-manager@1.2.2 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu | tee "$OUTPUT"
+npx @cobliteam/flink-state-manager@1.2.4 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu | tee "$OUTPUT"
 
 # Create a temporary values file
 TMP_VALUES=$(mktemp)
@@ -33,5 +33,5 @@ alex-job-chart:
 " > "$TMP_VALUES"
 
 # Add your values file to the command
-echo "Executing ->  helm upgrade --install "${original_args[@]}" --namespace $HELM_NAMESPACE --kube-context $HELM_KUBECONTEXT --values "$TMP_VALUES""
+echo "helm upgrade --install "${original_args[@]}" --namespace $HELM_NAMESPACE --kube-context $HELM_KUBECONTEXT --values "$TMP_VALUES""
 helm upgrade --install "${original_args[@]}" --namespace $HELM_NAMESPACE --kube-context $HELM_KUBECONTEXT --values "$TMP_VALUES"
