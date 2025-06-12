@@ -1,6 +1,6 @@
-name: "restore-savepoint"
-version: "0.1.0"
-description: "Upgrades (--install) a Flink job from the selected valid savepoint."
+name: "restore-state"
+version: "0.2.0"
+description: "Upgrades (--install) a Flink job from the selected valid state (savepoint or checkpoint)."
 command: "$HELM_PLUGIN_DIR/flink-state-manager.sh"
 hooks:
   install: "chmod +x $HELM_PLUGIN_DIR/flink-state-manager.sh"
