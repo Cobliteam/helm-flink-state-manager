@@ -35,9 +35,9 @@ done
 
 OUTPUT=$(mktemp)
 if [[ "$RESTORE_MODE" == "From a checkpoint" ]]; then
-  npx @cobliteam/flink-state-manager@1.4.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu --checkpoints | tee "$OUTPUT"
+  npx @cobliteam/flink-state-manager@1.5.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu --checkpoints | tee "$OUTPUT"
 else
-  npx @cobliteam/flink-state-manager@1.4.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu | tee "$OUTPUT"
+  npx @cobliteam/flink-state-manager@1.5.1 --values-path "$CHART_PATH"/values.yaml --prod-values-path "${VALUES_FILES[0]}" --context "$HELM_KUBECONTEXT" --menu | tee "$OUTPUT"
 fi
 
 # Create a temporary values file. This entry can receive either a savepoint or a
